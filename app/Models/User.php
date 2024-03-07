@@ -18,9 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fname',
+        'lname',
         'email',
         'password',
+        'gender',
+        'phone',
+        'dob',
     ];
 
     /**
@@ -42,4 +46,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function reviews()
+    {
+        return $this->belongsToMany(Hotel::class, 'reviews')->withPivot('rating', 'feedback');
+    }
+
+    public function hasReviewed(Hotel $hotel)
+    {
+        return $this->reviews()->where('hotel_id', $hotel->id)->exists();
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+
 }
