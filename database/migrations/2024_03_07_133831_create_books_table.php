@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('hotel_id');
+            $table->json('meals');
+            $table->boolean('is_accepted')->default(0);
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('room_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
-            $table->json('meals');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->timestamps();
         });
     }

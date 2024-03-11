@@ -13,24 +13,24 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string('fname');
+            $table->string('middlename');
+            $table->string('lname');
+            $table->string('email');
+            $table->string('country');
+            $table->string('state');
+            $table->string('address1');
+            $table->string('address2');
+            $table->integer('home_tel');
+            $table->string('type');
+            $table->integer('payment_card_id');
+            $table->date('expiry_date');
+            $table->string('postal_code');
+            $table->string('suburb');
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
-            $table->string('email');
-            $table->date('expiry_date');
-            $table->integer('payment_card_id');
-            $table->string('country');
-            $table->string('fname');
-            $table->string('middlename');
-            $table->string('lname');
-            $table->integer('home_tel');
-            $table->string('address1');
-            $table->string('address2');
-            $table->string('state');
-            $table->string('postal_code');
-            $table->string('type');
-            $table->string('suburb');
             $table->timestamps();
         });
     }
