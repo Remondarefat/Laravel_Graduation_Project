@@ -11,7 +11,8 @@ class Hotel extends Model
         'name',
         'location',
         'description',
-        'stars'
+        'stars',
+        'numberofrooms'
     ];
     use HasFactory;
     public function room(){

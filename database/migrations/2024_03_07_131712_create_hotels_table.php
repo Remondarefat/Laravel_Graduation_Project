@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('description');
             $table->integer('stars');
-            $table->integer('numberofrooms');
+            $table->integer('numberofrooms')->default(0);
             $table->timestamps();
         });
     }
